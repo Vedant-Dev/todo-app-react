@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Todo from './ToDo';
+import List from '@material-ui/core/List';
 
 function App() {
+  const [toDo, setToDo] = useState([
+    'This is my first task'
+    ]);
+  const addTask = (event) => {
+    event.preventDefault()
+    setToDo([...toDo,input]);
+    setInput('');
+  }
+
+  const [input, setInput] = useState('');
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hellow World 🚀🚀</h1>
+      <form autoComplete="on">
+       <TextField value={input} onChange={event => setInput(event.target.value)} id="outlined-basic" label="📝Enter Your Task" variant="outlined" />
+      <Button disabled={!input} type="submit" onClick={addTask} variant="contained" color="primary">Add ToDo</Button>
+      </form>
+        <List>
+          {toDo.map(t => {return <Todo text={t}/>})}
+        </List>
     </div>
   );
 }
