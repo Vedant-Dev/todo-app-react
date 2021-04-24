@@ -10,7 +10,6 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 function App() {
 	const [toDo, setToDo] = useState([]);
-	
 	const addTask = (event) => {
 		event.preventDefault()
 		// setToDo([...toDo,input]);
@@ -21,7 +20,6 @@ function App() {
 		})
 		setInput('');
 	}
-
 	useEffect( () => {
 		db.collection('todos').orderBy('timestamp','desc').onSnapshot( snapshot => {
 			setToDo(snapshot.docs.map( doc => {
@@ -32,9 +30,7 @@ function App() {
 			}))
 		})
 	}, [] )
-
 	const [input, setInput] = useState('');
-
 	const body = () =>{
 		if(toDo.length === 0)
 		{
@@ -50,7 +46,6 @@ function App() {
 			</List>);
 		}	
 	}
-
 	return (
 		<div className="App">
 			<h1>ToDo App 🚀🚀</h1>

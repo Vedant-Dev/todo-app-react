@@ -9,7 +9,6 @@ import {db} from './firebase';
 import Button from '@material-ui/core/Button';
 import firebase  from 'firebase';
 
-
 function ToDo(props) {
 	return (
 		<ListItem key={props.text.id} className="todo_list">
@@ -27,5 +26,4 @@ function ToDo(props) {
 			</ListItemSecondaryAction>
 		</ListItem>);
 }
-
 export default ToDo;
